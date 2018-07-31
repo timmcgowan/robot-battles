@@ -42,10 +42,6 @@ jquery RPG to battle against opposing robots.
 
 * Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player.
 
-### Reminder: Submission on BCS
-
-* Please submit both the deployed Github.io link to your homework AND the link to the Github Repository!
-
 - - -
 
 **Good Luck!**
