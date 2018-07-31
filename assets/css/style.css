@@ -1,0 +1,166 @@
+body {
+  background-color:#212529;
+  background-image:url(../img/map-image.png);
+  background-repeat:no-repeat;
+  background-position: center middle;
+}
+
+#masthead {
+  /* Positioning */
+  margin: 0 0 0 0;
+  overflow: auto;
+
+  /* Typography */
+  color: #fff;
+  background: #fff;
+}
+
+#characters {
+  /* Positioning */
+  margin: 5px 5px 5px 5px;
+  /* Typography */
+  color: #fff;
+}
+
+.character-img {
+  width: 120px;
+  height: 120px;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: left;
+}
+
+.character-img p {
+  width: auto;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: left;
+  vertical-align: text-bottom;
+}
+.jumbotron {
+  margin-top: 15px;
+  padding-top: 5em;
+ }
+
+.typewriter p {
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  font-family: "Courier";
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.typewriter p:nth-child(1) {
+  width: 20em;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .08em; /* Adjust as needed */
+  -webkit-animation: type 3s steps(40, end);
+  animation: 
+    type 3s steps(40, end),
+    blink-caret .75s step-end infinite;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.typewriter p:nth-child(2) {
+  width: 28em;
+  opacity: 0;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .08em; /* Adjust as needed */
+  animation: 
+    type 3s steps(40, end),
+    blink-caret .75s step-end infinite;
+  animation-iteration-count: 1;
+  -webkit-animation: type2 3s steps(40, end);
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
