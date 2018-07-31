@@ -24,7 +24,7 @@ jquery RPG to battle against opposing robots.
 
 3. The player wins the game by defeating all enemy characters. The player loses the game the game if their character's `HP` falls to zero or below.
 
-## Option 2 Game design notes
+## Game design notes
 
 * Each character in the game has 3 attributes: `Health Points`, `Attack Power` and `Counter Attack Power`.
 
