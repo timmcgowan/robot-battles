@@ -24,7 +24,7 @@
   </header>
 <!-- End Header -->
 
-<div id="game" style="color: white">
+<div id="gameHead" style="color: white">
   <h1>Play the Robot Battle game!</h1>
 </div>
 
@@ -34,33 +34,41 @@
         <div class="col-md-offset-2 col-md-8">
             <!-- The characters -->
             <div class="col-md-12" id="characters">
-              <span class="character-img" id="terminator">
-                <p>The Terminator</p>
-                <img src="./assets/img/terminator-img.jpg" alt="terminator" id="terminator-img" class="character-img">
-                <p class="health">120</p>
-              </span>
+                <div class="character-img" id="C0">
+                  <p>The Terminator</p>
+                  <img onclick="selectPlayer('0')" src="./assets/img/terminator-img.jpg" alt="terminator" id="terminator-img" class="character-img">
+                  <p class="health">120</p>
+                </div>
 
-              <span class="character-img" id="gallaxhar">
-                <p>Gallaxhar's Robot</p>
-                <img src="./assets/img/gallaxhar-img.jpg" alt="Gallaxhar's Robot" id="gallaxhar-img" class="character-img">
-                <p class="health">100</p>
-              </span>
+                <div class="character-img" id="C1">
+                  <p>Gallaxhar's Robot</p>
+                  <img onclick="selectPlayer('1')" src="./assets/img/gallaxhar-img.jpg" alt="Gallaxhar's Robot" id="gallaxhar-img" class="character-img">
+                  <p class="health">100</p>
+                </div>
+    
+                <div class="character-img" id="C2">
+                  <p>The MIP</p>
+                  <img onclick="selectPlayer('2')" src="./assets/img/mip-img.jpg" alt="The MIP" id="mip-img" class="character-img">
+                  <p class="health">150</p>
+                </div>
       
-              <span class="character-img" id="mip">
-                <p>The MIP</p>
-                <img src="./assets/img/mip-img.jpg" alt="The MIP" id="mip-img" class="character-img">
-                <p class="health">150</p>
-              </span>
-      
-              <span class="character-img" id="marty">
-                <p>Mr. Marty</p>
-                <img src="./assets/img/marty-img.jpg" alt="Marty" id="marty-img" class="character-img">
-                <p class="health">180</p>
-              </span>
-            </div> <!-- End characters -->
-            
+                <div class="character-img" id="C3">
+                  <p>Mr. Marty</p>
+                  <img onclick="selectPlayer('3')" src="./assets/img/marty-img.jpg" alt="Marty" id="marty-img" class="character-img">
+                  <p class="health">180</p>
+                </div>
+            </div> 
+            <!-- End character select area -->
+          </div>
         </div>
-      </div>
+          <div class="row">
+              <div class="col-sm">
+                      <!-- The battle area-->
+                      <div class="col-md-12" id="gamearea">
+                        <H2>Battle Area</H2>
+                      </div>
+              </div>
+          </div>
     </div>
   </body>
 </html>

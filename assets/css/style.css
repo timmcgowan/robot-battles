@@ -20,6 +20,7 @@ body {
   margin: 5px 5px 5px 5px;
   /* Typography */
   color: #fff;
+  display: flex;
 }
 
 .character-img {
@@ -38,10 +39,29 @@ body {
   float: left;
   vertical-align: text-bottom;
 }
+
+.character-name {
+  /* Positioning */
+  margin: 5px 5px 5px 5px;
+  /* Typography */
+  color: #fff;
+}
+.character-health {
+  /* Positioning */
+  margin: 5px 5px 5px 5px;
+  /* Typography */
+  color: #fff;
+}
 .jumbotron {
   margin-top: 15px;
   padding-top: 5em;
  }
+
+#gamearea{  
+  /* Positioning */
+  margin: 5px 5px 5px 5px;
+  float: left;
+}
 
 .typewriter p {
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
