@@ -24,7 +24,7 @@ jquery RPG to battle against opposing robots.
 
 3. The player wins the game by defeating all enemy characters. The player loses the game the game if their character's `HP` falls to zero or below.
 
-## Option 2 Game design notes
+## Game design notes
 
 * Each character in the game has 3 attributes: `Health Points`, `Attack Power` and `Counter Attack Power`.
 
@@ -41,10 +41,6 @@ jquery RPG to battle against opposing robots.
   * A winning player must pick their characters wisely by first fighting an enemy with low `Counter Attack Power`. This will allow them to grind `Attack Power` and to take on enemies before they lose all of their `Health Points`. Healing options would mess with this dynamic.
 
 * Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player.
-
-### Reminder: Submission on BCS
-
-* Please submit both the deployed Github.io link to your homework AND the link to the Github Repository!
 
 - - -
 
