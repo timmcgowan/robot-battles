@@ -9,90 +9,93 @@ var opp_attack = 0;
 var opp_img;
 var opp_sel = false; //opponent selected false
 var debug = true; // for console debug output
+var log_char = false; // console log characters
 
 // Character Stats
-var character = {
-	"character1": {
-		"health": "132",
-		"attack": "25",
+var character = [
+    {
+        "name":"character1",
+		"health":132,
+		"attack":25,
 		"img": "/path/to/img.jpg"
-	},
-	"character2": {
-		"health": "150",
-		"attack": "10",
+	},{ 
+        "name":"character2",
+		"health":150,
+		"attack":10,
 		"img": "/path/to/img.jpg"
-	},
-	"character3": {
-		"health": "122",
-		"attack": "22",
+	},{
+        "name":"character3",
+		"health":122,
+		"attack":22,
 		"img": "/path/to/img.jpg"
-	},
-	"character4": {
-		"health": "112",
-		"attack": "30",
+    },{
+	    "name":"character4",
+		"health":112,
+		"attack":30,
 		"img": "/path/to/img.jpg"
-	}
-}
+    }
+];
+
+var charString = JSON.stringify(character);
+var charObj;
 
 try {
-    var charOjb = JSON.parse(character); 
+     charObj = JSON.parse(charString); 
 } catch (e) {
-    // You can read e for more info
-    // Let's assume the error is that we already have parsed the payload
-    // So just return that
-    charOjb = character;
+    charObj = character;
 }
 
-function getCharacterById(id) {
-    return character.filter(
-      function(character) {
-        return character.code == code
-      }
-    );
+// verifying character outputs
+if(log_char){
+    var i;
+    console.log(Object.keys(charObj));
+    for (i in charObj){
+        console.log("name: " + charObj[i].name);
+        console.log("health: " + charObj[i].health);
+        console.log("attack: " + charObj[i].attack); //base attack power
+        console.log("img: " + charObj[i].img);
+    }
 }
-
-console.log(charOjb);
 
 //Choose a Champion
-function champion(id){
-    if (!champ_sel){
-
-    console.log(id);
-    champ_health = charOjb[id].health;
-    champ_attack = charOjb[id].attack;
-    champ_img = charOjb[id].img;
-    champ_sel = true;
+function champion(cid){
+    if(debug){console.log("cid: " + cid)}
+    if(!champ_sel){
+       champ_health = charObj[cid].health;
+       champ_attack = charObj[cid].attack; //base attack power
+       champ_img = charObj[cid].img;
+       champ_sel = true;
     }
-    if(debug){console.log("champ_health" + champ_health + " champ_attack" + champ_attack)}
+    if(debug){console.log("Champion health: " + champ_health + " Attack Power: " + champ_attack)}
 }
 
 //Choose an Opponent 
-//if no oponent, no play notice
-function opponent(id){
+function opponent(oid){
+    if(debug){console.log("oid: " + oid)}
     if (!opp_sel){
-    opp_health = character[id].health;
-    opp_attack = character[id].attack;
-    opp_img = character[id].img;
+    opp_health = charObj[oid].health;
+    opp_attack = charObj[oid].attack;
+    opp_img = charObj[oid].img;
     opp_sel = true;
     }
-    if(debug){console.log("opp_health" + opp_health + " opp_attack" + opp_attack)}
+    if(debug){console.log("Opponent Health: " + opp_health + " Opponent Attack :" + opp_attack)}
 }
 
 //Attack (calculations)
 //Opponent Health & Attack
-function battle(cid,oid){
+function battle(_champ,_opp){
     //update competitor stats
-    champion(cid);
-    opponent(oid);
-    
-    //Battle Calculations
-    //champion Health & Attack (compound each round)
-    var attack = champ_attack + attack;
-    //decrease health by opponent attack
-    var health_loss = champ_health - opp_attack;
-    if(debug){console.log("at" + attack + " hit" + health_loss)}
-}
+    champion(_champ);
+    opponent(_opp);
 
+    //Battle Calculations
+    // Champion's Move
+    opp_health = opp_health - champ_attack; //Champion Base Attack on Oppent Health
+    champ_attack = champ_attack + charObj[_champ].attack; // Increase base attack
+    // Opponent Move
+    champ_health = champ_health - opp_attack;    //decrease health by opponent attack
+    if(debug){console.log("New Health: " + champ_health + " New Attack: " + champ_attack)}
+}
 
 //Score Card?
 
@@ -102,4 +105,3 @@ function battle(cid,oid){
 
 
 //Restart Game
-
