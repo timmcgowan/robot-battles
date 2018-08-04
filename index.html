@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Robot Battles Game!</title>
-    <!--<link rel="stylesheet" type="text/css" href="assets/css/reset.css">-->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
-    <script src="assets/js/battle.js"></script> 
     <script src="assets/js/game.js"></script> 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
@@ -23,52 +22,22 @@
   </nav>
   </header>
 <!-- End Header -->
+<div class="container">
 
-<div id="gameHead" style="color: white">
+<div id="gamehead">
   <h1>Play the Robot Battle game!</h1>
 </div>
-
 <!-- Game Output --> 
-<div class="container">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <!-- The characters -->
-            <div class="col-md-12" id="characters">
-                <div class="character-img" id="C0">
-                  <p>The Terminator</p>
-                  <img onclick="selectPlayer('0')" src="./assets/img/terminator-img.jpg" alt="terminator" id="terminator-img" class="character-img">
-                  <p class="health">120</p>
-                </div>
-
-                <div class="character-img" id="C1">
-                  <p>Gallaxhar's Robot</p>
-                  <img onclick="selectPlayer('1')" src="./assets/img/gallaxhar-img.jpg" alt="Gallaxhar's Robot" id="gallaxhar-img" class="character-img">
-                  <p class="health">100</p>
-                </div>
-    
-                <div class="character-img" id="C2">
-                  <p>The MIP</p>
-                  <img onclick="selectPlayer('2')" src="./assets/img/mip-img.jpg" alt="The MIP" id="mip-img" class="character-img">
-                  <p class="health">150</p>
-                </div>
-      
-                <div class="character-img" id="C3">
-                  <p>Mr. Marty</p>
-                  <img onclick="selectPlayer('3')" src="./assets/img/marty-img.jpg" alt="Marty" id="marty-img" class="character-img">
-                  <p class="health">180</p>
-                </div>
+     <!--Character Area-->
+            <div id="characters">
+              <script>playerArea()</script>
             </div> 
-            <!-- End character select area -->
-          </div>
-        </div>
-          <div class="row">
-              <div class="col-sm">
-                      <!-- The battle area-->
-                      <div class="col-md-12" id="gamearea">
-                        <H2>Battle Area</H2>
-                      </div>
-              </div>
-          </div>
-    </div>
+             <!-- End character select area -->
+        <!-- The battle area-->
+              <div class="gamearea">
+                  <p style="color:white">Battle Area</p>
+                <div id="gamearea">
+                </div>
+</div>
   </body>
 </html>

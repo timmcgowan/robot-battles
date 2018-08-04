@@ -8,19 +8,60 @@ body {
 #masthead {
   /* Positioning */
   margin: 0 0 0 0;
-  overflow: auto;
-
-  /* Typography */
   color: #fff;
-  background: #fff;
+}
+
+#gamehead h1{
+  font-size: 22px;
+  color: #fff;
+}
+
+#gamearea{  
+  /* Positioning */
+  margin: 5px 5px 5px 5px;
+}
+
+div {
+  /* border: 5px solid green; */
+  padding: 8px;
+  margin: 8px;
+  float: left;
+}
+
+.gamearea{  
+  /* Positioning */
+  float: left;
+}
+.gamearea div{  
+  /* Positioning */
+  border: 5px solid orange;
+  float: left;
+}
+.gamearea p{
+  color:white;
+  font-size: 18px;
+}
+span.emoji{
+  padding-left: 3mm;
+  padding-right: 3mm;
+  font-size: 30px;
+  float: center;
+}
+#vs{
+  text-align: justify;
+  float: center;
 }
 
 #characters {
   /* Positioning */
-  margin: 5px 5px 5px 5px;
   /* Typography */
   color: #fff;
-  display: flex;
+  height: 255px;
+  width: 640px;
+}
+
+#characters span p{
+  float: left;
 }
 
 .character-img {
@@ -29,6 +70,40 @@ body {
   padding-left: 5px;
   padding-right: 5px;
   float: left;
+  margin: 5px 5px 5px 5px;
+}
+
+.champion-img {
+  width: 120px;
+  height: 120px;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: left;
+}
+
+.opponent-img {
+  width: 120px;
+  height: 120px;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: right;
+}
+
+.contestant-img {
+  width: 120px;
+  height: 120px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.character-name {
+  margin: 5px 5px 5px 5px;
+  color: #fff;
+  text-align: left;
+  vertical-align: top;
+  text-transform: capitalize;
+  line-height: 18px;
+  font-size: 14px;
 }
 
 .character-img p {
@@ -36,151 +111,19 @@ body {
   height: 30px;
   padding-left: 5px;
   padding-right: 5px;
-  float: left;
   vertical-align: text-bottom;
 }
-
-.character-name {
+.health {
   /* Positioning */
   margin: 5px 5px 5px 5px;
   /* Typography */
   color: #fff;
-}
-.character-health {
-  /* Positioning */
-  margin: 5px 5px 5px 5px;
-  /* Typography */
-  color: #fff;
+  text-align: center;
+  vertical-align: text-bottom;
+  line-height: 12px;
+  font-size: 20px;
 }
 .jumbotron {
   margin-top: 15px;
   padding-top: 5em;
  }
-
-#gamearea{  
-  /* Positioning */
-  margin: 5px 5px 5px 5px;
-  float: left;
-}
-
-.typewriter p {
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  font-family: "Courier";
-  font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.typewriter p:nth-child(1) {
-  width: 20em;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .08em; /* Adjust as needed */
-  -webkit-animation: type 3s steps(40, end);
-  animation: 
-    type 3s steps(40, end),
-    blink-caret .75s step-end infinite;
-  animation-iteration-count: 1;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-.typewriter p:nth-child(2) {
-  width: 28em;
-  opacity: 0;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .08em; /* Adjust as needed */
-  animation: 
-    type 3s steps(40, end),
-    blink-caret .75s step-end infinite;
-  animation-iteration-count: 1;
-  -webkit-animation: type2 3s steps(40, end);
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
-@keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@-webkit-keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-@-webkit-keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-@-webkit-keyframes blink {
-  50% {
-    border-color: tranparent;
-  }
-}
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
-}
-
