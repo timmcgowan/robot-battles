@@ -16,6 +16,7 @@ var _battle = false;
 var opp_sel = false; //opponent selected false
 var debug = true; // for console debug output
 var log_char = false; // console log characters
+var round = 1;
 
 // Character Stats
 var character = [
@@ -82,6 +83,10 @@ function selectPlayer(id){
         renderHtml.vs();
         champ = id;
     } else if (!opp_sel){
+        if (round > 1) {
+            $("#choosetext").remove();
+            if(debug){console.log("remove choose text")}
+        }
         opp_sel = true;
         renderHtml.player(id,"opponent");
         renderHtml.battleButton();
@@ -138,9 +143,11 @@ function battle(_champ,_opp){
         return false;
     } else {
         if (!_battle){
-            if(debug){console.log("cid: " + _champ)}
-            champ_health = charObj[_champ].health;
-            champ_attack = charObj[_champ].attack; //base attack power
+            if(round==1){
+                if(debug){console.log("cid: " + _champ)}
+                champ_health = charObj[_champ].health;
+                champ_attack = charObj[_champ].attack; //base attack power
+            }
             if(debug){console.log("Champion health: " + champ_health + " Attack Power: " + champ_attack)}
             //Choose an Opponent 
             if(debug){console.log("oid: " + _opp)}
@@ -165,8 +172,13 @@ function battle(_champ,_opp){
         console.log("You win!, Your oppenent lost.");
         $("#" + _opp).remove();
         $("#attack_button").remove();
+        let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose another opponent!");
+        $("#gamearea").append(choosetext);
+        opp_sel = false;
         wins++;
+        round++;
     } else {
+        round++;
         champ_health = champ_health - opp_attack;    //decrease health by opponent attack
     }
     if(debug){console.log("New Health: " + champ_health + " New Attack: " + champ_attack)}  
