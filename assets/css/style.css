@@ -34,7 +34,7 @@ div {
 }
 .gamearea div{  
   /* Positioning */
-  border: 5px solid orange;
+  border: 3px solid orange;
   float: left;
 }
 .gamearea p{
