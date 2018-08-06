@@ -25,7 +25,7 @@ var character = [
     {
         "name":"The Terminator",
 		"health":132,
-		"attack":10,
+		"attack":5,
 		"img": "./assets/img/terminator-img.jpg"
 	},{ 
         "name":"Gallaxhar Robot",
@@ -35,12 +35,12 @@ var character = [
 	},{
         "name":"The MIP",
 		"health":122,
-		"attack":8,
+		"attack":12,
 		"img": "./assets/img/mip-img.jpg"
     },{
 	    "name":"Marty",
 		"health":112,
-		"attack":12,
+		"attack":25,
 		"img": "./assets/img/marty-img.jpg"
     }
 ];
@@ -147,7 +147,10 @@ var renderHtml = {
             $("#gamearea").append(_vdiv);
         }
 }
-
+    function resetGame() {
+// easy reset
+location.reload(); 
+    }
 //Attack (calculations)
 //Opponent Health & Attack
 function battle(_champ,_opp){
@@ -165,28 +168,25 @@ function battle(_champ,_opp){
             if(debug){console.log("Champion health: " + champ_health + " Attack Power: " + champ_attack)}
             //Choose an Opponent 
             if(debug){console.log("oid: " + _opp)}
-//            opp_health = charObj[_opp].health;
-//            opp_attack = charObj[_opp].attack;
             opp_sel = true;
             if(debug){console.log("Opponent Health: " + opp_health + " Opponent Attack :" + opp_attack)}
             _battle = true;
         }
-    console.log("champattack : " + champ_attack );
-    //Battle Calculations
+    
+    // Battle Calculations
+
     // Champion's Move
     opp_health = opp_health - champ_attack; //Champion Base Attack on Oppent Health
     $("#opponent-health").text(opp_health);
 
     if (opp_health > 0){
         champ_attack = champ_attack + bc_attack;
+        //champ_attack = champ_attack + charObj[_champ].attack; // Increase base attack
+        if(debug){console.log("_champ attack : " + champ_attack );}
     } 
-    console.log("_opp health : " + opp_health );
-
-    champ_attack = champ_attack + charObj[_champ].attack; // Increase base attack
-
-    console.log("_champ attack : " + champ_attack );
 
     // Opponent Move
+    if(debug){console.log("_opp health : " + opp_health );}
     if (opp_health <= 0){
         //opponent loses
         wins++;
@@ -194,41 +194,58 @@ function battle(_champ,_opp){
         $("#" + _opp).remove();
         $("#attack_button").remove();
         if (wins === 1){
-            let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose another opponent!");
-            $("#gamearea").append(choosetext);
+            let _choosediv = $("<div class='character' id='choosetext'>");
+            let choosetext = $("<span style='color:white'>").text("Choose another opponent!");
+            _choosediv.append(choosetext);
+            $("#gamearea").append(_choosediv);
         }else if (wins === 2){
             console.log(wins);
+            let _choosediv = $("<div class='character' id='choosetext'>");
             let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose your final opponent!");
-            $("#gamearea").append(choosetext); 
+            _choosediv.append(choosetext);
+            $("#gamearea").append(_choosediv);
         }else{
             console.log(wins);
-            let choosetext = $("<span id='choosetext' style='color:white'>").text("GameOver, You win!");
-            $("#gamearea").append(choosetext); 
+            let _choosediv = $("<div class='character' id='choosetext'>");
+            let choosetext = $("<span id='choosetext' style='color:white'>").text("Game Over, You win!");
+            let restartbutton = $('<button/>', {
+                text: "Restart",
+                id: 'restart',
+                click: function () {resetGame();}
+            });
+            console.log("Restart");
+            _choosediv.append(choosetext).append(restartbutton);
+            $("#gamearea").append(_choosediv);
+
+           // $("#gamearea").append(restartbutton);
         }
         opp_sel = false;
         round++;
     } else {
         round++;
         endgame = true;
-        champ_health = champ_health - opp_attack;    //decrease health by opponent attack
-        $("#champion-health").text(champ_health);
- 
+        if (champ_health > 0){
+            champ_health = champ_health - opp_attack;    //decrease health by opponent attack
+            if (champ_health <= 0){
+                    $("#" + _champ).remove();
+                    let _choosediv = $("<div class='character' id='choosetext'>");
+                    let choosetext = $("<span id='choosetext' style='color:white'>").text("Game Over, You Loose!");
+                    let restartbutton = $('<button/>', {
+                        text: "Restart",
+                        id: 'restart',
+                        click: function () {resetGame();}
+                    });
+                    console.log("Restart");
+                    _choosediv.append(choosetext).append(restartbutton);
+                    $("#gamearea").prepend(_choosediv);
+                }else{
+                    $("#champion-health").text(champ_health);
+                }    
+        }
     }
     if(debug){console.log("New Health: " + champ_health + " New Attack: " + champ_attack)}  
 
-    if(endgame){
-        let restartbutton = $("#restart").on("click", function() {
-            console.log("Restart");
-            resetGame();
-          });
-        $("#gamearea").append(restartbutton);
-    }
-}
-
 }
 //Score Card?
-
-//Determine Win/Loss
-// if health less than 0, LOSE
-// if all oppen 
-
+ 
+}
