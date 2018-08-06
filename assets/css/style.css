@@ -48,7 +48,13 @@ span.emoji{
   float: center;
 }
 #vs{
-  text-align: justify;
+  padding-left: 0;
+  padding-right: 3mm;
+  border: none;
+  text-align: right;
+  vertical-align: middle;
+  height: 140px;
+  width: 70px;
   float: center;
 }
 
@@ -56,7 +62,7 @@ span.emoji{
   /* Positioning */
   /* Typography */
   color: #fff;
-  height: 255px;
+  height: 245px;
   width: 640px;
 }
 

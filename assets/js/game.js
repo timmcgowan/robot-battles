@@ -12,8 +12,8 @@ var opp_attack;
 var bo_attack;
 var opp_img;
 var charType = "notselected"
-var wins;
-var looses;
+var wins=0;
+var looses=0;
 var _battle = false;
 var opp_sel = false; //opponent selected false
 var debug = true; // for console debug output
@@ -98,6 +98,9 @@ function selectPlayer(id){
         renderHtml.battleButton();
         opp_health = charObj[id].health;
         opp_attack = charObj[id].attack;
+        if (wins===2){
+            $("#characters").remove();
+        }
 
         opp = id;
         bo_attack = charObj[id].attack;
@@ -135,7 +138,7 @@ var renderHtml = {
                 click: function () { battle(champ,opp); }
             });
             //_bbutton.addClass('atttack_button')
-            $("#gamearea").append(_bbutton);
+            $("#vs").append(_bbutton);
         },
         vs: function(){
             let _vdiv = $("<div id='vs'>");
@@ -186,19 +189,23 @@ function battle(_champ,_opp){
     // Opponent Move
     if (opp_health <= 0){
         //opponent loses
-        console.log("You win!, Your oppenent lost.");
+        wins++;
+        console.log("You win!," + wins + " Your oppenent lost.");
         $("#" + _opp).remove();
         $("#attack_button").remove();
-        if (wins===2){
-            let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose the final opponent!");
+        if (wins === 1){
+            let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose another opponent!");
             $("#gamearea").append(choosetext);
+        }else if (wins === 2){
+            console.log(wins);
+            let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose your final opponent!");
+            $("#gamearea").append(choosetext); 
         }else{
             console.log(wins);
-            let choosetext = $("<span id='choosetext' style='color:white'>").text("Choose another opponent!");
+            let choosetext = $("<span id='choosetext' style='color:white'>").text("GameOver, You win!");
             $("#gamearea").append(choosetext); 
         }
         opp_sel = false;
-        wins++;
         round++;
     } else {
         round++;
@@ -210,11 +217,11 @@ function battle(_champ,_opp){
     if(debug){console.log("New Health: " + champ_health + " New Attack: " + champ_attack)}  
 
     if(endgame){
-        $("#restart").on("click", function() {
+        let restartbutton = $("#restart").on("click", function() {
             console.log("Restart");
-        
             resetGame();
           });
+        $("#gamearea").append(restartbutton);
     }
 }
 
